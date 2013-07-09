@@ -13,61 +13,56 @@
 		<link rel="stylesheet" type="text/css" href="css/default.css" />
 		<link rel="stylesheet" type="text/css" href="css/component.css" />
 		<script src="js/modernizr.custom.js"></script>
+        <script src="js/jquery-2.0.3.js"></script>
+        <script src = "jsonObject.js"></script>
+        <script>
+        	function createImage(hash)
+			{
+				var wimage_li = document.createElement("li");
+				var wimage_a = document.createElement("a");
+				var wimage_img = document.createElement("img");
+												
+				wimage_a.target = "_blank";
+				wimage_a.href = "http://i.imgur.com/" + hash + ".jpg";
+				
+				wimage_img.src = "http://i.imgur.com/" + hash + ".jpg";
+				
+				wimage_a.appendChild(wimage_img);
+				
+				wimage_li.appendChild(wimage_a);				
+				
+				var gallery = document.getElementById("grid");
+				gallery.appendChild(wimage_li);	
+					
+			}
+			
+			$(document).ready(function (){
+    			$("#getdata-button").click(function(){
+					for (i = 0; i < 2; i++)
+					{
+						createImage(jsonObject.data[i].hash);
+					}
+				});
+			});        
+        </script>
 	</head>
 	<body>
+    	<a href="" id="getdata-button">Get JSON Data</a>
 		<div class="container">
 			<!-- Top Navigation -->
 			<header>
-				<h1>/r/Wallpapers <span>with CSS Animations</span></h1>
+				<h1 id="test">/r/Wallpapers <span>with CSS Animations</span></h1>
 			</header>
-			<ul class="grid effect-6" id="grid">
-				<li><a href="http://i.imgur.com/roCdVZI.jpg" target="_blank">
-                	<img src="http://i.imgur.com/roCdVZI.jpg"></a></li>  
-				<li><a href="http://i.imgur.com/Yb1oNUy.jpg" target="_blank">
-                	<img src="http://i.imgur.com/Yb1oNUy.jpg"></a></li>
-                <li><a href="http://i.imgur.com/roCdVZI.jpg" target="_blank">
-                	<img src="http://i.imgur.com/roCdVZI.jpg"></a></li>  
-				<li><a href="http://i.imgur.com/Yb1oNUy.jpg" target="_blank">
-                	<img src="http://i.imgur.com/Yb1oNUy.jpg"></a></li>
-                <li><a href="http://i.imgur.com/roCdVZI.jpg" target="_blank">
-                	<img src="http://i.imgur.com/roCdVZI.jpg"></a></li>  
-				<li><a href="http://i.imgur.com/Yb1oNUy.jpg" target="_blank">
-                	<img src="http://i.imgur.com/Yb1oNUy.jpg"></a></li>
-                <li><a href="http://i.imgur.com/roCdVZI.jpg" target="_blank">
-                	<img src="http://i.imgur.com/roCdVZI.jpg"></a></li>  
-				<li><a href="http://i.imgur.com/Yb1oNUy.jpg" target="_blank">
-                	<img src="http://i.imgur.com/Yb1oNUy.jpg"></a></li>
-                <li><a href="http://i.imgur.com/roCdVZI.jpg" target="_blank">
-                	<img src="http://i.imgur.com/roCdVZI.jpg"></a></li>  
-				<li><a href="http://i.imgur.com/Yb1oNUy.jpg" target="_blank">
-                	<img src="http://i.imgur.com/Yb1oNUy.jpg"></a></li>
-                <li><a href="http://i.imgur.com/roCdVZI.jpg" target="_blank">
-                	<img src="http://i.imgur.com/roCdVZI.jpg"></a></li>  
-				<li><a href="http://i.imgur.com/Yb1oNUy.jpg" target="_blank">
-                	<img src="http://i.imgur.com/Yb1oNUy.jpg"></a></li>
-                <li><a href="http://i.imgur.com/roCdVZI.jpg" target="_blank">
-                	<img src="http://i.imgur.com/roCdVZI.jpg"></a></li>  
-				<li><a href="http://i.imgur.com/Yb1oNUy.jpg" target="_blank">
-                	<img src="http://i.imgur.com/Yb1oNUy.jpg"></a></li>
-                <li><a href="http://i.imgur.com/roCdVZI.jpg" target="_blank">
-                	<img src="http://i.imgur.com/roCdVZI.jpg"></a></li>  
-				<li><a href="http://i.imgur.com/Yb1oNUy.jpg" target="_blank">
-                	<img src="http://i.imgur.com/Yb1oNUy.jpg"></a></li>
-                <li><a href="http://i.imgur.com/roCdVZI.jpg" target="_blank">
-                	<img src="http://i.imgur.com/roCdVZI.jpg"></a></li>  
-				<li><a href="http://i.imgur.com/Yb1oNUy.jpg" target="_blank">
-                	<img src="http://i.imgur.com/Yb1oNUy.jpg"></a></li>
-                <li><a href="http://i.imgur.com/roCdVZI.jpg" target="_blank">
-                	<img src="http://i.imgur.com/roCdVZI.jpg"></a></li>  
-				<li><a href="http://i.imgur.com/Yb1oNUy.jpg" target="_blank">
-                	<img src="http://i.imgur.com/Yb1oNUy.jpg"></a></li>				
+            
+			<ul class="grid effect-6" id="grid">											
 			</ul>
 		</div>
 		<script src="js/masonry.pkgd.min.js"></script>
 		<script src="js/imagesloaded.js"></script>
 		<script src="js/classie.js"></script>
 		<script src="js/AnimOnScroll.js"></script>
-		<script>
+        <script>
+						
 			new AnimOnScroll( document.getElementById( 'grid' ), {
 				minDuration : 0.4,
 				maxDuration : 0.7,
