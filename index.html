@@ -15,25 +15,54 @@
 		<script src="js/modernizr.custom.js"></script>
         <script src="js/jquery-2.0.3.js"></script>
         <script src = "jsonObject.js"></script>
+               
+	</head>
+	<body>
+    	<a href="" id="getdata-button">Get JSON Data</a>
+		<div class="container">
+			<!-- Top Navigation -->
+			<header id = 'test'>
+				<h1>/r/Wallpapers <span>with CSS Animations</span></h1>
+			</header>
+            
+			<ul class="grid effect-6" id="grid">	
+            											
+			</ul>
+		</div>
+		<script src="js/masonry.pkgd.min.js"></script>
+		<script src="js/imagesloaded.js"></script>
+		<script src="js/classie.js"></script>
+		<script src="js/AnimOnScroll.js"></script>
+        <script>
+						
+			new AnimOnScroll( document.getElementById('grid'), {
+				minDuration : 0.4,
+				maxDuration : 0.7,
+				viewportFactor : 0.2
+			} );
+		</script>
+        
         <script>
         	function createImage(hash)
 			{
 				var wimage_li = document.createElement("li");
 				var wimage_a = document.createElement("a");
 				var wimage_img = document.createElement("img");
-												
-				wimage_a.target = "_blank";
-				wimage_a.href = "http://i.imgur.com/" + hash + ".jpg";
 				
-				wimage_img.src = "http://i.imgur.com/" + hash + ".jpg";
+				var url = "http://i.imgur.com/" + hash + ".jpg";
+						
+				wimage_a.target = "_blank";
+				wimage_a.href = url;
+								
+				wimage_img.src = url;
 				
 				wimage_a.appendChild(wimage_img);
 				
 				wimage_li.appendChild(wimage_a);				
 				
 				var gallery = document.getElementById("grid");
-				gallery.appendChild(wimage_li);	
-					
+				
+				gallery.appendChild(wimage_li);					
 			}
 			
 			$(document).ready(function (){
@@ -43,31 +72,12 @@
 						createImage(jsonObject.data[i].hash);
 					}
 				});
-			});        
-        </script>
-	</head>
-	<body>
-    	<a href="" id="getdata-button">Get JSON Data</a>
-		<div class="container">
-			<!-- Top Navigation -->
-			<header>
-				<h1 id="test">/r/Wallpapers <span>with CSS Animations</span></h1>
-			</header>
-            
-			<ul class="grid effect-6" id="grid">											
-			</ul>
-		</div>
-		<script src="js/masonry.pkgd.min.js"></script>
-		<script src="js/imagesloaded.js"></script>
-		<script src="js/classie.js"></script>
-		<script src="js/AnimOnScroll.js"></script>
-        <script>
-						
-			new AnimOnScroll( document.getElementById( 'grid' ), {
-				minDuration : 0.4,
-				maxDuration : 0.7,
-				viewportFactor : 0.2
-			} );
-		</script>
+			});
+			
+			function return_hash (i)
+			{
+				return "http://i.imgur.com/" + jsonObject.data[i].hash + ".jpg";
+			}        
+        </script> 
 	</body>
 </html>
